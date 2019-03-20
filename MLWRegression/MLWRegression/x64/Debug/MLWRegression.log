@@ -1,0 +1,11 @@
+﻿  Main.c
+c:\users\mikolaj\documents\projekty\mlwregression\mlwregression\mlwregression\main.c(18): warning C4047: '!=': 'int (__cdecl *)(void)' differs in levels of indirection from 'int'
+c:\users\mikolaj\documents\projekty\mlwregression\mlwregression\mlwregression\main.c(30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mikolaj\documents\projekty\mlwregression\mlwregression\mlwregression\main.c(39): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mikolaj\documents\projekty\mlwregression\mlwregression\mlwregression\main.c(40): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mikolaj\documents\projekty\mlwregression\mlwregression\mlwregression\main.c(41): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mikolaj\documents\projekty\mlwregression\mlwregression\mlwregression\main.c(42): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mikolaj\documents\projekty\mlwregression\mlwregression\mlwregression\main.c(58): warning C4090: '=': different 'const' qualifiers
+c:\users\mikolaj\documents\projekty\mlwregression\mlwregression\mlwregression\main.c(66): warning C4133: 'function': incompatible types - from 'float *' to 'double *'
+c:\users\mikolaj\documents\projekty\mlwregression\mlwregression\mlwregression\main.c(76): warning C4013: 'linreg' undefined; assuming extern returning int
+  MLWRegression.vcxproj -> C:\Users\Mikolaj\Documents\Projekty\MLWRegression\MLWRegression\x64\Debug\MLWRegression.exe
