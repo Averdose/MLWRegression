@@ -16,7 +16,7 @@ void main()
 	float **yes = (float**)malloc(trainSize * sizeof(float*));
 	float *yess = malloc(sizeof(float)*trainSize);
 	float *y = malloc(sizeof(float)*testSize);
-	float **x = malloc(sizeof(float)*testSize);
+	float **x = (float**)malloc(sizeof(float*)*testSize);
 	float *beta = malloc(sizeof(float)*(argNum + 1));
 	
 	puts("which algorithm do you want to use?\n0: MLP\n1: linear regression\n2: different implementation");
@@ -112,13 +112,19 @@ void main()
 
 	
 	free(y);
-	free(x);
 	for (int i = 0; i < trainSize; i++)
 	{
 		free(xes[i]);
 		free(yes[i]);
+		if (i < testSize)
+		{
+			free(x[i]);
+		}
 	}
+	free(x);
+	free(beta);
 	free(xes);
+	free(yess);
 	free(yes);
 	free(xess);
 }
