@@ -52,6 +52,6 @@ Mkfile.old
 dkms.conf
 
 #custom
-./MLWRegression/.vs/
-./MLWRegression/MLWRegression/Debug/
+MLWRegression/.vs/
+MLWRegression/MLWRegression/Debug/
 

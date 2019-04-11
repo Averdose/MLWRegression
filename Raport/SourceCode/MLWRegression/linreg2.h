@@ -1,0 +1,1 @@
+int linreg(int n, const float x[], const float y[], float* m, float* b, float* r);
