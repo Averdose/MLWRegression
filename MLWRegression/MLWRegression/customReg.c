@@ -1,6 +1,9 @@
 #include "customReg.h"
 #include <stdlib.h>
 #include <math.h>
+#include "linreg2.h"
+#include "Utility.h"
+
 
 static float meanFc(float* nums, int n);
 static float variance(float* nums, int n);
@@ -34,49 +37,34 @@ static float variance(float* nums, int n)
 	return variance;
 }
 
-void transpose(float** arr, float* ar, int s1, int collumn)
-{
-	//printf("column=%d\n", collumn);
-	for (int i = 0; i < s1; i++)
-	{
-		ar[i] = arr[i][collumn];
-		//printf("%f\n", arr[i][collumn]);
-	}
-}
-void print2(float* arr, int s1)
-{
-	for (int i = 0; i < s1; i++)
-	{
-		printf("%f ", arr[i]);
-	}
-	printf("\n");
-}
-void print(float** arr, int s1, int s2)
-{
-	for (int i = 0; i < s1; i++)
-	{
-		for (int j = 0; j < s2; j++)
-		{
-			printf("%f ", arr[i][j]);
-		}
-		printf("\n");
-	}
-}
 
+void linRegWrapper2(float** xes, float** yes, int size, int numArgs, float* ans)
+{
+	ans[0] = 0;
+	float m, b, r;
+	float *ty = malloc(sizeof(float)*size);
+	transpose(yes, ty, size, 0);
+	for (int i = 1; i < numArgs + 1; i++)
+	{
+		float *tx = malloc(sizeof(float)*size);
+		transpose(xes, tx, size, i - 1);
+		linreg(size, tx, ty, &m, &b, &r);
+		ans[0] += b;
+		ans[i] = m;
+	}
+}
 void linRegWrapper(float** xes, float** yes, int size, int numArgs, float* ans)
 {
 	//print(xes, size, numArgs);
 	//print(yes, size,1);
 	lin_reg lr;
 	ans[0] = 0;
-	float *ty = malloc(sizeof(float)*size);
+	float *ty = (float*) malloc(sizeof(float)*size);
 	transpose(yes, ty, size, 0);
-	print2(ty, size);
 	for (int i = 1; i < numArgs+1; i++)
 	{
 		float *tx = malloc(sizeof(float)*size);
 		transpose(xes, tx, size, i -1);
-		print2(tx, size);
 		linReg(tx, ty, size, &lr);
 		ans[0] += lr.b;
 		ans[i] = lr.a;
