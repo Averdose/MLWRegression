@@ -113,17 +113,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="csvReader.c" />
     <ClCompile Include="customReg.c" />
+    <ClCompile Include="GradientReg.c" />
     <ClCompile Include="kann.c" />
     <ClCompile Include="kautodiff.c" />
     <ClCompile Include="linreg2.c" />
     <ClCompile Include="Main.c" />
+    <ClCompile Include="statistics.c" />
+    <ClCompile Include="utility.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="csvReader.h" />
     <ClInclude Include="customReg.h" />
+    <ClInclude Include="GradientReg.h" />
     <ClInclude Include="kann.h" />
     <ClInclude Include="kautodiff.h" />
     <ClInclude Include="linreg2.h" />
+    <ClInclude Include="statistics.h" />
+    <ClInclude Include="Utility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
