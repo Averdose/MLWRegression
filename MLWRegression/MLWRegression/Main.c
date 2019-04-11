@@ -60,7 +60,7 @@ void main()
 	char algoritm = in;
 	if (readcsv("input.csv", 0.3, xes, yes, x, y, &testSize, &trainSize, &argNum) == -1)
 	{
-		printf("Couldnt open specified file data will be generated automatically instead");
+		printf("Couldnt open specified file data will be generated automatically instead\n");
 		for (int i = 0; i < testSize; i++)
 		{
 			x[i] = (float *)malloc(argNum * sizeof(float));
