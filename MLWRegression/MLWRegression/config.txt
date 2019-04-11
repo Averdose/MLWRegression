@@ -1,0 +1,4 @@
+input.csv 0.3 n 3 output1.txt 1009
+input.csv 0.2 n 1 output1.txt
+input.csv 0.1 n 2 output1.txt
+input.csv 0.3 n 3 output1.txt 10009
