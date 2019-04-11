@@ -59,7 +59,7 @@ void linRegWrapper(float** xes, float** yes, int size, int numArgs, float* ans)
 	//print(yes, size,1);
 	lin_reg lr;
 	ans[0] = 0;
-	float *ty = malloc(sizeof(float)*size);
+	float *ty = (float*) malloc(sizeof(float)*size);
 	transpose(yes, ty, size, 0);
 	for (int i = 1; i < numArgs+1; i++)
 	{

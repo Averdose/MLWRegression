@@ -1,3 +1,4 @@
 #pragma once
 #include <stdio.h>
-int readcsv(char* path, float testPercent, float** xes, float** yes, float* x, float* y, int* testSize, int* trainSize, int* argNum);
+int getsize(char* path, float testPercent, int* trainSize, int* testSize);
+int readcsv(char* path, float** xes, float** yes, float** x, float* y, int testSize, int trainSize, int* argNum);

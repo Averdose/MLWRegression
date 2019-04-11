@@ -15,7 +15,7 @@ int getLength(FILE* f) {
 	return i;
 }
 
-int getNumArgs(char* line, char sep) {
+int getNumArgs(char* line) {
 	char* *next, arg;
 	int i = 0;
 	while ((arg = strtok_s(line, ",", &next)) != NULL)
@@ -26,7 +26,7 @@ int getNumArgs(char* line, char sep) {
 	return i;
 }
 
-void readRow(char* line, float* values, int noValues, char sep)
+void readRow(char* line, float* values, int noValues)
 {
 	char* *next;
 	char* arg = strtok(line, ",");
@@ -55,58 +55,68 @@ FILE* openFile(char* path) {
 	}
 	return f;
 }
-int readcsv(char* path, float testPercent, float** xes, float** yes, float** x, float* y, int* testSize, int* trainSize, int* argNum) {
-	char* sep = ",";
+
+int getsize(char* path, float testPercent, int* trainSize, int* testSize) {
 	FILE* f = openFile(path);
-	float* lineValues;
+	if (f == NULL)
+	{
+		return -1;
+	}
+	int length = getLength(f);
+	rewind(f);
+	*testSize = (testPercent * (float)length);
+	*trainSize = length - *testSize;
+	fclose(f);
+}
+
+int readcsv(char* path, float** xes, float** yes, float** x, float* y, int testSize, int trainSize, int* argNum) {
+	FILE* f = openFile(path);
+	float* lineValues = (float*)malloc(sizeof(float));
+
 	int numArgs;
 	if (f == NULL)
 	{
 		return -1;
 	}
 	rewind(f);
-	char line[999];
+	char* line = (char*)malloc(sizeof(char) * 9999);
 	int iterator = 0;
 	int first = 1;
-	int length = getLength(f) - 1;
-	rewind(f);
-	int numOfTest = (testPercent * (float)length);
-	int numOfTrain = length - numOfTest;
-	while (fgets(line, 999, f))
+	while (fgets(line, 9999, f))
 	{
 		if (first == 1) {
-			numArgs = getNumArgs(line, sep);
+			numArgs = getNumArgs(line);
 			lineValues = malloc(sizeof(float)*numArgs);
-			for (int i = 0; i < numOfTrain; i++)
+			for (int i = 0; i < trainSize; i++)
 			{
 				xes[i] = (float *)malloc((numArgs-1) * sizeof(float));
 				yes[i] = (float *)malloc(sizeof(float));
 			}
-			for (int i = 0; i < numOfTest; i++)
+			for (int i = 0; i < testSize; i++)
 			{
 				x[i] = (float *)malloc((numArgs -1) * sizeof(float));
 			}
 			first = 0;
 		}
 		else {
-			readRow(line, lineValues, numArgs, sep);
+			readRow(line, lineValues, numArgs);
 			for (int i = 0; i < numArgs - 1; i++)
 			{
-				if (iterator < numOfTrain)
+				if (iterator < trainSize)
 				{
 					float scsc = lineValues[i];
 					xes[iterator][i] = lineValues[i];
 				}
 				else {
-					x[iterator - numOfTrain][i] = lineValues[i];
+					x[iterator - trainSize][i] = lineValues[i];
 				}
 			}
-			if (iterator < numOfTrain)
+			if (iterator < trainSize)
 			{
 				yes[iterator][0] = lineValues[numArgs -1];
 			}
 			else {
-				y[iterator - numOfTrain] = lineValues[numArgs - 1];
+				y[iterator - trainSize] = lineValues[numArgs - 1];
 			}
 			iterator++;
 
@@ -114,6 +124,5 @@ int readcsv(char* path, float testPercent, float** xes, float** yes, float** x, 
 	}
 	//value y is not countet as argument
 	*argNum = numArgs - 1;
-	*trainSize = numOfTrain;
-	*testSize = numOfTest;
+	fclose(f);
 }
