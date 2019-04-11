@@ -65,3 +65,33 @@ void printResult(float* beta, float* prediction, int argNum, int testSize, float
 	}
 }
 
+void readConfig(char* path, char*** arguments)
+{
+	FILE* f = openFile(path);
+	if (f == NULL)
+	{
+		return -1;
+	}
+	int iterator = 0;
+	char* line = (char*)malloc(sizeof(char) * 9999);
+	while (fgets(line, 9999, f))
+	{
+		char* *next;
+		char* arg = strtok(line, " ");
+		int i = 0;
+		while (arg != NULL)
+		{
+			arguments[iterator][i] = arg;
+			arg = strtok(NULL, " ");
+			i++;
+		}
+		if (i == 5)
+		{
+			arguments[iterator][5] = "10000";
+		}
+		line = NULL;
+		iterator++;
+	}
+	fclose(f);
+
+}
