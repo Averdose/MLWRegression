@@ -21,12 +21,6 @@
     <ClCompile Include="customReg.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="kann.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="kautodiff.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="linreg2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -45,12 +39,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="customReg.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="kautodiff.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="kann.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="linreg2.h">
