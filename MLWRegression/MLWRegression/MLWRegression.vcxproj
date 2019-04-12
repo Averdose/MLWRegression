@@ -75,6 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -116,8 +117,6 @@
     <ClCompile Include="csvReader.c" />
     <ClCompile Include="customReg.c" />
     <ClCompile Include="GradientReg.c" />
-    <ClCompile Include="kann.c" />
-    <ClCompile Include="kautodiff.c" />
     <ClCompile Include="linreg2.c" />
     <ClCompile Include="Main.c" />
     <ClCompile Include="statistics.c" />
@@ -127,8 +126,6 @@
     <ClInclude Include="csvReader.h" />
     <ClInclude Include="customReg.h" />
     <ClInclude Include="GradientReg.h" />
-    <ClInclude Include="kann.h" />
-    <ClInclude Include="kautodiff.h" />
     <ClInclude Include="linreg2.h" />
     <ClInclude Include="statistics.h" />
     <ClInclude Include="Utility.h" />
